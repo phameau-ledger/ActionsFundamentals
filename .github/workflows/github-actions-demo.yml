@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Print Name of the GH event and branch
         run: |
-          echo "Triggered event: ${{ github.event.name }}"
+          echo "Triggered event: ${{ github.event_name }}"
           echo "Name of branch: ${{ github.ref }}"
 
       - name: Perform checkout of the repository
