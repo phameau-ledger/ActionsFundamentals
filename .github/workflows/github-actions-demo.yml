@@ -1,0 +1,36 @@
+name: GitHub Actions Demo
+
+run-name: GH Action Demo
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/**'
+  pull_request:
+    branches:
+      - main
+  schedule:
+      - cron:  '15 6 * * 0'
+  workflow_dispatch:  
+  
+    
+jobs:
+  Build:
+    name: Job_Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Name of the GH event and branch
+        run: |
+          echo "Triggered event: ${{ github.event.name }}"
+          echo "Name of branch: ${{ github.ref }}"
+
+      - name: Perform checkout of the repository
+        uses: actions/checkout@v3.3.0
+      
+      - name: List files in the repository
+        run: |
+          echo "Files present in the directory:"
+          tree
+          
